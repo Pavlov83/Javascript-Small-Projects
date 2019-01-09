@@ -2,18 +2,39 @@
 <html>
 <head>
 	<title></title>
-		<script type="text/javascript">
 
-			var positionVal = ['50','100','150','200','250','300','350','400',
-			'450','500','550','600','650','700','750','800'];
+					
+			
 
-			var dice=Math.round(Math.random()*5);
+			
+</head>
+<body>
 
+	<script type="text/javascript">
+
+			var positionVal = [[50,0],[100,0],[150,0],[200,0],[250,0],[300,0],[350,0],[400,0],
+			[450,0],[500,0],550,600,650,700,750,800];
+
+			currentPos = 0;
+
+			function  dice (){
+				return Math.round(Math.random()*5);
+}
+
+		
 
 		function move(){
-			document.getElementById("person").style.paddingLeft = 
-			positionVal[dice] + 'px';
+			currentPos += dice();
+			if(currentPos >  positionVal.length-1){
+				//alert('You win');
+			}
+
+			else{
+
+			document.getElementById("person").style.left = positionVal[currentPos][0] + 'px';
+			document.getElementById("person").style.top = positionVal[currentPos][1] + 'px';
 		}
+	}
 
 
 
@@ -21,14 +42,11 @@
 			
 	</script>
 			
-</head>
-<body>
-
-<div id = "person">
+<div id = "person" style="position:absolute;left: 0;transition:left 1s;" >
 	<img src = "https://image.freepik.com/free-icon/silhouette-of-a-man-walking_318-27604.jpg" height="82" width="82">
 </div>
 
- <button onclick="move()">Roll</button> 
+ <button onclick="move()" style="float:right;">Roll</button> 
 
 		
 </body>
